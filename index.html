@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>에듀윌 RDB 활용 GEN-AI 풀스택 개발자 과정</title>
+  <meta name="description" content="에듀윌 국비교육원 성남센터 RDB 활용 GEN-AI 풀스택 개발자 6개월 실무 집중 교육 과정 안내 및 지원 랜딩 페이지입니다." />
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Pretendard 웹폰트 -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" />
+
+  <style>
+    body {
+      font-family: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif;
+      word-break: keep-all;
+      scroll-behavior: smooth;
+    }
+    .bg-eduwill { background-color: #fccc0c; }
+    .text-eduwill { color: #fccc0c; }
+    .border-eduwill { border-color: #fccc0c; }
+    
+    /* 둥둥 떠다니는 플로팅 버튼 애니메이션 */
+    @keyframes floatUpDown {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-8px);
+      }
+    }
+    .animate-float {
+      animation: floatUpDown 2.4s ease-in-out infinite;
+    }
+
+    /* 스크롤 방향에 따라 부드럽게 나타나고 사라지는 헤더 트랜지션 */
+    #main-header {
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+    }
+    #main-header.header-hidden {
+      transform: translateY(-100%);
+      opacity: 0;
+      pointer-events: none;
+    }
+    #main-header.header-visible {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    /* 파트별 스크롤 리빌 애니메이션 효과 (스크롤 올리고 내릴 때마다 생동감 있게 반응) */
+    .reveal-section {
+      opacity: 0;
+      transform: translateY(32px) scale(0.98);
+      transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform;
+    }
+    .reveal-section.is-revealed {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased selection:bg-amber-300 selection:text-slate-900 overflow-x-hidden">
+
+  <!-- 1. 상단 고정 스마트 헤더 (E 로고 삭제 & 스크롤 내리면 숨김, 올리면 나타남) -->
+  <header id="main-header" class="fixed top-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200/80 shadow-xs header-visible">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 sm:h-20 flex items-center justify-between">
+      
+      <!-- 텍스트 브랜딩 -->
+      <a href="#" class="flex flex-col text-left group">
+        <span class="text-[11px] font-semibold text-slate-500 tracking-tight">
+          에듀윌 국비교육원 성남센터
+        </span>
+        <span class="text-sm sm:text-base font-extrabold text-slate-900 tracking-tight group-hover:text-amber-600 transition-colors">
+          RDB × GEN-AI 풀스택
+        </span>
+      </a>
+
+      <!-- 데스크톱 메뉴 링크 -->
+      <nav class="hidden md:flex items-center gap-7 text-sm font-medium text-slate-600">
+        <a href="#overview" class="hover:text-slate-950 transition-colors">과정개요</a>
+        <a href="#tech" class="hover:text-slate-950 transition-colors">기술스택</a>
+        <a href="#goals" class="hover:text-slate-950 transition-colors">훈련목표</a>
+        <a href="#curriculum" class="hover:text-slate-950 transition-colors">커리큘럼</a>
+        <a href="#process" class="hover:text-slate-950 transition-colors">취업지원</a>
+      </nav>
+
+      <!-- 오른쪽 위에 헤드라인 상담신청 버튼 (새창) -->
+      <a
+        href="https://naver.me/5qLaGB0M"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-1.5 px-4 py-2 sm:px-5 sm:py-2.5 rounded-full font-bold text-xs sm:text-sm bg-slate-900 text-white hover:bg-slate-800 shadow-sm hover:shadow transition-all transform hover:-translate-y-0.5 active:translate-y-0"
+      >
+        <span>상담신청</span>
+        <svg class="w-3.5 h-3.5 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+        </svg>
+      </a>
+    </div>
+  </header>
+
+  <!-- 2. HERO SECTION -->
+  <section class="relative pt-32 pb-24 md:pt-44 md:pb-36 overflow-hidden bg-gradient-to-b from-[#fccc0c]/25 via-[#fccc0c]/10 to-transparent">
+    <div class="reveal-section max-w-5xl mx-auto px-4 sm:px-6 text-center relative z-10">
+      
+      <span class="inline-flex items-center gap-2 py-1.5 px-4 rounded-full bg-slate-900 text-amber-300 text-xs sm:text-sm font-bold mb-6 tracking-wide shadow-sm">
+        ✨ K-디지털 트레이닝 (K-DT) 국비지원
+      </span>
+      
+      <h1 class="text-3xl sm:text-5xl md:text-6xl font-black text-slate-900 leading-[1.2] mb-6">
+        RDB 활용 <span class="relative inline-block text-slate-950 underline decoration-eduwill decoration-wavy decoration-2">GEN-AI</span><br/>
+        풀스택 개발자 과정
+      </h1>
+
+      <p class="text-base sm:text-xl text-slate-700 max-w-2xl mx-auto font-medium leading-relaxed mb-8">
+        관계형 데이터베이스(RDB)부터 최신 생성형 AI 파이프라인까지!<br class="hidden sm:block"/>
+        기업 실무에 즉시 투입 가능한 <span class="font-bold text-slate-900">6개월 집중 취업 교육 과정</span>
+      </p>
+
+      <!-- 혜택 목록 -->
+      <div class="flex flex-wrap items-center justify-center gap-2.5 sm:gap-4 text-xs sm:text-sm font-semibold text-slate-700">
+        <span class="flex items-center gap-1.5 bg-white/80 backdrop-blur-sm px-4 py-2 rounded-xl border border-slate-200/80 shadow-xs">
+          💰 매월 훈련장려금 지급
+        </span>
+        <span class="flex items-center gap-1.5 bg-white/80 backdrop-blur-sm px-4 py-2 rounded-xl border border-slate-200/80 shadow-xs">
+          💼 1:1 맞춤형 취업 컨설팅
+        </span>
+        <span class="flex items-center gap-1.5 bg-white/80 backdrop-blur-sm px-4 py-2 rounded-xl border border-slate-200/80 shadow-xs">
+          🎯 정원 20명 소수정예 집중 케어
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. INFO BOX (모집 요강 및 일정 안내: 개강일 12월 14일(월) + 과정 지원하기 버튼) -->
+  <section id="overview" class="max-w-4xl mx-auto px-4 sm:px-6 -mt-12 sm:-mt-16 relative z-20">
+    <div class="reveal-section bg-white rounded-3xl shadow-xl shadow-slate-200/80 border border-slate-200/90 overflow-hidden">
+      
+      <!-- 상단 타이틀 바 -->
+      <div class="bg-slate-900 text-white px-6 sm:px-8 py-5 flex flex-wrap items-center justify-between gap-3">
+        <div class="flex items-center gap-2.5">
+          <span class="text-xl">📅</span>
+          <h2 class="text-base sm:text-lg font-extrabold tracking-tight">모집 요강 및 일정 안내</h2>
+        </div>
+        <span class="text-xs font-bold px-3 py-1 rounded-full bg-eduwill text-slate-950">
+          선착순 20명 마감
+        </span>
+      </div>
+
+      <div class="p-6 sm:p-8">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
+          
+          <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200/70">
+            <span class="text-xs font-bold text-slate-500 block mb-1">교육과정</span>
+            <span class="text-sm font-extrabold text-slate-900 block leading-snug">
+              RDB 활용 GEN-AI 풀스택 개발자
+            </span>
+          </div>
+
+          <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200/70">
+            <span class="text-xs font-bold text-slate-500 block mb-1">교육장소</span>
+            <span class="text-sm font-bold text-slate-900 block">
+              에듀윌 국비교육원 성남센터
+            </span>
+          </div>
+
+          <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200/70">
+            <span class="text-xs font-bold text-slate-500 block mb-1">교육기간</span>
+            <span class="text-sm font-extrabold text-blue-600 block">
+              6개월 (총 960시간)
+            </span>
+          </div>
+
+          <!-- 개강일 (12월 14일(월) 강조 카드) -->
+          <div class="p-4 rounded-2xl bg-amber-50/80 border-2 border-amber-300 sm:col-span-2 lg:col-span-1 shadow-xs">
+            <div class="flex items-center justify-between mb-1">
+              <span class="text-xs font-black text-amber-900">개강일</span>
+              <span class="text-[11px] font-bold px-2 py-0.5 rounded bg-red-500 text-white">접수중</span>
+            </div>
+            <span class="text-lg font-black text-red-600 block">
+              12월 14일(월)
+            </span>
+          </div>
+
+          <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200/70">
+            <span class="text-xs font-bold text-slate-500 block mb-1">수업구성</span>
+            <span class="text-sm font-bold text-slate-900 block">
+              월~금 주 5회 (09:00 ~ 18:00)
+            </span>
+          </div>
+
+          <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200/70">
+            <span class="text-xs font-bold text-slate-500 block mb-1">모집정원</span>
+            <span class="text-sm font-bold text-slate-900 block">
+              20명 소수정예 집중 케어
+            </span>
+          </div>
+
+        </div>
+
+        <!-- 개강일 아래 가로형 과정 지원하기 버튼 -->
+        <div class="pt-2">
+          <a
+            href="https://naver.me/5qLaGB0M"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="w-full group relative overflow-hidden flex items-center justify-center gap-2.5 bg-eduwill hover:bg-amber-400 text-slate-950 font-black text-base sm:text-lg py-4 px-6 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5 active:translate-y-0 border border-yellow-300"
+          >
+            <span>과정 지원하기</span>
+            <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+            </svg>
+          </a>
+          <p class="text-center text-xs text-slate-500 mt-2.5 font-medium">
+            * 지원서 접수 시 전문 취업 상담사가 1:1로 국비지원 자격 조회를 도와드립니다.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. CLASS INFORMATION -->
+  <section class="py-20 max-w-5xl mx-auto px-4 sm:px-6">
+    <div class="reveal-section">
+      <div class="text-center mb-14">
+        <span class="text-xs font-bold uppercase tracking-widest text-amber-600 block mb-2">Class Overview</span>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
+          기업 실무 기반 AI·데이터 역량을 한 번에 완성!
+        </h2>
+        <p class="text-slate-600 mt-2 max-w-2xl mx-auto text-sm sm:text-base leading-relaxed">
+          단순한 문법 암기가 아닌 실무 프로젝트를 통해 실제 서비스 가능한 수준의 포트폴리오를 완성합니다.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200/80 shadow-xs hover:border-amber-400 transition-all">
+          <div class="w-10 h-10 rounded-xl bg-amber-50 text-amber-700 flex items-center justify-center mb-4 text-xl font-bold">
+            💼
+          </div>
+          <h3 class="text-lg font-bold text-slate-900 mb-2">진출 가능 취업 분야</h3>
+          <p class="text-slate-600 text-sm leading-relaxed mb-4">
+            최신 생성형 AI 응용 능력과 탄탄한 풀스택 웹 개발 역량을 겸비한 핵심 개발 인재로 도약합니다.
+          </p>
+          <div class="flex flex-wrap gap-2 text-xs font-semibold text-slate-700">
+            <span class="bg-slate-100 px-3 py-1.5 rounded-lg">AI 서비스 개발자</span>
+            <span class="bg-slate-100 px-3 py-1.5 rounded-lg">데이터 기반 백엔드 개발자</span>
+            <span class="bg-slate-100 px-3 py-1.5 rounded-lg">React 프론트엔드 개발자</span>
+            <span class="bg-slate-100 px-3 py-1.5 rounded-lg">데이터 엔지니어 / 분석가</span>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200/80 shadow-xs hover:border-amber-400 transition-all">
+          <div class="w-10 h-10 rounded-xl bg-amber-50 text-amber-700 flex items-center justify-center mb-4 text-xl font-bold">
+            🏆
+          </div>
+          <h3 class="text-lg font-bold text-slate-900 mb-2">과정 연계 우대 자격증</h3>
+          <p class="text-slate-600 text-sm leading-relaxed mb-4">
+            실무 커리큘럼을 자연스럽게 학습하며 주요 공인 IT 및 데이터 자격증 취득까지 체계적으로 준비합니다.
+          </p>
+          <div class="flex flex-wrap gap-2 text-xs font-semibold text-slate-700">
+            <span class="bg-slate-100 px-3 py-1.5 rounded-lg">정보처리기사 / 산업기사</span>
+            <span class="bg-slate-100 px-3 py-1.5 rounded-lg">SQLD (SQL 개발자)</span>
+            <span class="bg-slate-100 px-3 py-1.5 rounded-lg">ADsP (데이터분석 준전문가)</span>
+            <span class="bg-slate-100 px-3 py-1.5 rounded-lg">빅데이터 분석기사</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. TECH STACK -->
+  <section id="tech" class="py-20 bg-white border-y border-slate-200/80">
+    <div class="reveal-section max-w-5xl mx-auto px-4 sm:px-6">
+      <div class="text-center mb-14">
+        <span class="text-xs font-bold uppercase tracking-widest text-amber-600 block mb-2">Core Tech Stack</span>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
+          실무에 즉시 적용 가능한 핵심 기술 스택
+        </h2>
+        <p class="text-slate-600 mt-2 text-sm sm:text-base max-w-xl mx-auto">
+          프론트엔드부터 백엔드, RDB, 최신 생성형 AI RAG 파이프라인까지 유기적으로 체득합니다.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div class="bg-slate-50/80 rounded-2xl p-6 border border-slate-200/70 hover:shadow-md transition-all">
+          <div class="w-8 h-8 rounded-lg bg-blue-100 text-blue-700 flex items-center justify-center font-bold text-xs mb-4">
+            FE
+          </div>
+          <h4 class="font-extrabold text-slate-900 text-base mb-1">Frontend</h4>
+          <p class="text-xs text-slate-500 mb-4">현대적인 웹 인터페이스</p>
+          <ul class="text-xs text-slate-700 space-y-2 font-medium">
+            <li>• HTML5 / CSS3 / Modern JS</li>
+            <li>• React 기반 Single Page App</li>
+            <li>• Axios 비동기 데이터 통신</li>
+          </ul>
+        </div>
+
+        <div class="bg-slate-50/80 rounded-2xl p-6 border border-slate-200/70 hover:shadow-md transition-all">
+          <div class="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold text-xs mb-4">
+            BE
+          </div>
+          <h4 class="font-extrabold text-slate-900 text-base mb-1">Backend & RDB</h4>
+          <p class="text-xs text-slate-500 mb-4">견고한 서버 및 데이터 설계</p>
+          <ul class="text-xs text-slate-700 space-y-2 font-medium">
+            <li>• Python & Flask REST API</li>
+            <li>• Node.js / Express 서버</li>
+            <li>• MySQL 관계형 데이터베이스</li>
+          </ul>
+        </div>
+
+        <div class="bg-amber-50/70 rounded-2xl p-6 border border-amber-200 hover:shadow-md transition-all">
+          <div class="w-8 h-8 rounded-lg bg-eduwill text-slate-950 flex items-center justify-center font-bold text-xs mb-4">
+            AI
+          </div>
+          <h4 class="font-extrabold text-slate-900 text-base mb-1">GEN-AI & Data</h4>
+          <p class="text-xs text-amber-800 font-semibold mb-4">생성형 AI 실무 응용</p>
+          <ul class="text-xs text-slate-800 space-y-2 font-medium">
+            <li>• OpenAI ChatGPT API 연동</li>
+            <li>• LangChain & LlamaIndex RAG</li>
+            <li>• Pinecone 벡터 검색 데이터베이스</li>
+          </ul>
+        </div>
+
+        <div class="bg-slate-50/80 rounded-2xl p-6 border border-slate-200/70 hover:shadow-md transition-all">
+          <div class="w-8 h-8 rounded-lg bg-purple-100 text-purple-700 flex items-center justify-center font-bold text-xs mb-4">
+            OPS
+          </div>
+          <h4 class="font-extrabold text-slate-900 text-base mb-1">DevOps & Tools</h4>
+          <p class="text-xs text-slate-500 mb-4">현업 협업 및 배포 환경</p>
+          <ul class="text-xs text-slate-700 space-y-2 font-medium">
+            <li>• Git / GitHub 형상관리</li>
+            <li>• 클라우드 서버 배포 실습</li>
+            <li>• VS Code 가상 개발환경</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. TRAINING GOALS (과정 훈련목표) -->
+  <section id="goals" class="py-20 max-w-5xl mx-auto px-4 sm:px-6">
+    <div class="reveal-section">
+      <div class="text-center mb-14">
+        <span class="text-xs font-bold uppercase tracking-widest text-amber-600 block mb-2">Training Goals</span>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">과정 훈련목표</h2>
+        <p class="text-slate-600 mt-2 text-sm sm:text-base">기초부터 실무까지, 6개월 완주 후 도달하는 명확한 목표입니다.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+        <div class="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-xs flex items-start gap-4">
+          <span class="text-2xl font-black text-amber-500">01</span>
+          <div>
+            <h4 class="font-bold text-slate-900 mb-1">개발 기본기 확립</h4>
+            <p className="text-sm text-slate-600 leading-relaxed">
+              컴퓨팅 사고력과 Python 기초 문법, 객체지향 프로그래밍 핵심을 탄탄히 다져 완주합니다.
+            </p>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-xs flex items-start gap-4">
+          <span class="text-2xl font-black text-amber-500">02</span>
+          <div>
+            <h4 class="font-bold text-slate-900 mb-1">관계형 데이터베이스(RDB) 역량</h4>
+            <p className="text-sm text-slate-600 leading-relaxed">
+              MySQL 설계(ERD), 정규화, 복합 SQL 쿼리를 자유자재로 다루는 실무 역량을 배양합니다.
+            </p>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-xs flex items-start gap-4">
+          <span class="text-2xl font-black text-amber-500">03</span>
+          <div>
+            <h4 class="font-bold text-slate-900 mb-1">현업 표준 개발 환경 경험</h4>
+            <p className="text-sm text-slate-600 leading-relaxed">
+              Git 브랜치 협업 전략, API 서버 구축 및 클라우드 배포 과정을 직접 수행합니다.
+            </p>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-xs flex items-start gap-4">
+          <span class="text-2xl font-black text-amber-500">04</span>
+          <div>
+            <h4 class="font-bold text-slate-900 mb-1">생성형 AI 실무 도구 융합</h4>
+            <p className="text-sm text-slate-600 leading-relaxed">
+              OpenAI API, LangChain, Pinecone을 활용해 실제 동작하는 AI 서비스를 완성합니다.
+            </p>
+          </div>
+        </div>
+
+        <div class="md:col-span-2 bg-gradient-to-r from-slate-900 to-slate-800 text-white rounded-2xl p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-4 shadow-md">
+          <div class="flex items-center gap-4">
+            <span class="text-3xl font-black text-eduwill">05</span>
+            <div>
+              <h4 class="font-extrabold text-lg text-white mb-1">기업 과제 기반 실전 포트폴리오</h4>
+              <p class="text-sm text-slate-300">
+                실제 기업 프로젝트를 수행하여 서류 전형과 기술 면접에서 강력한 경쟁력을 입증합니다.
+              </p>
+            </div>
+          </div>
+          <a
+            href="https://naver.me/5qLaGB0M"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="shrink-0 px-6 py-3 rounded-xl bg-eduwill text-slate-950 font-bold text-sm hover:bg-amber-400 transition-colors"
+          >
+            선발 지원하기
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. CURRICULUM -->
+  <section id="curriculum" class="py-20 bg-slate-100/70 border-y border-slate-200/80">
+    <div class="reveal-section max-w-5xl mx-auto px-4 sm:px-6">
+      <div class="text-center mb-14">
+        <span class="text-xs font-bold uppercase tracking-widest text-amber-600 block mb-2">Curriculum</span>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">체계적인 6단계 교육과정</h2>
+        <p class="text-slate-600 mt-2 text-sm sm:text-base">기초부터 프로젝트 포트폴리오까지 순서대로 정복합니다.</p>
+      </div>
+
+      <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden divide-y divide-slate-100">
+        <div class="p-5 sm:p-6 flex flex-col md:flex-row md:items-center justify-between gap-4 hover:bg-slate-50 transition-colors">
+          <div class="md:w-1/3">
+            <span class="text-xs font-bold text-amber-600 mb-1 block">STAGE 01</span>
+            <h4 class="font-extrabold text-slate-900 text-base">프로그래밍 기초 및 개발 환경</h4>
+          </div>
+          <div class="md:w-2/3 text-sm text-slate-600 font-medium">
+            • Python 핵심 문법, 데이터 구조 및 알고리즘 기초<br/>
+            • Git/GitHub 형상관리, VS Code 가상환경 셋업
+          </div>
+        </div>
+
+        <div class="p-5 sm:p-6 flex flex-col md:flex-row md:items-center justify-between gap-4 hover:bg-slate-50 transition-colors">
+          <div class="md:w-1/3">
+            <span class="text-xs font-bold text-amber-600 mb-1 block">STAGE 02</span>
+            <h4 class="font-extrabold text-slate-900 text-base">프론트엔드 웹 개발</h4>
+          </div>
+          <div class="md:w-2/3 text-sm text-slate-600 font-medium">
+            • HTML5 / CSS3 / Modern JavaScript 반응형 웹 설계<br/>
+            • React 기반 Single Page Application(SPA) 및 Axios 비동기 통신
+          </div>
+        </div>
+
+        <div class="p-5 sm:p-6 flex flex-col md:flex-row md:items-center justify-between gap-4 hover:bg-slate-50 transition-colors">
+          <div class="md:w-1/3">
+            <span class="text-xs font-bold text-amber-600 mb-1 block">STAGE 03</span>
+            <h4 class="font-extrabold text-slate-900 text-base">백엔드 & RDB 데이터베이스</h4>
+          </div>
+          <div class="md:w-2/3 text-sm text-slate-600 font-medium">
+            • MySQL 데이터베이스 모델링, 테이블 정규화 및 심화 SQL 작성<br/>
+            • Flask / Node.js 기반 RESTful API 구축 및 JWT 인증 구현
+          </div>
+        </div>
+
+        <div class="p-5 sm:p-6 flex flex-col md:flex-row md:items-center justify-between gap-4 bg-amber-50/50 hover:bg-amber-50 transition-colors border-l-4 border-amber-400">
+          <div class="md:w-1/3">
+            <span class="inline-block px-2 py-0.5 rounded bg-slate-900 text-eduwill text-[11px] font-bold mb-1">
+              CORE AI
+            </span>
+            <h4 class="font-extrabold text-slate-950 text-base">생성형 AI 실무 응용</h4>
+          </div>
+          <div class="md:w-2/3 text-sm text-slate-800 font-semibold">
+            • OpenAI API 연동 챗봇 및 인텔리전트 서비스 구축<br/>
+            • LangChain, LlamaIndex 기반 프롬프트 엔지니어링<br/>
+            • Pinecone 벡터DB 연동을 통한 RAG(검색 증강 생성) 시스템 실습
+          </div>
+        </div>
+
+        <div class="p-5 sm:p-6 flex flex-col md:flex-row md:items-center justify-between gap-4 hover:bg-slate-50 transition-colors">
+          <div class="md:w-1/3">
+            <span class="text-xs font-bold text-amber-600 mb-1 block">STAGE 05</span>
+            <h4 class="font-extrabold text-slate-900 text-base">실무 프로젝트 & 포트폴리오</h4>
+          </div>
+          <div class="md:w-2/3 text-sm text-slate-600 font-medium">
+            • 기업 과제 기반 팀 프로젝트 수행 (기획 - 설계 - 개발 - 클라우드 배포)<br/>
+            • Notion 기술 문서화, 시연 발표 및 GitHub 포트폴리오 완성
+          </div>
+        </div>
+
+        <div class="p-5 sm:p-6 flex flex-col md:flex-row md:items-center justify-between gap-4 hover:bg-slate-50 transition-colors">
+          <div class="md:w-1/3">
+            <span class="text-xs font-bold text-amber-600 mb-1 block">STAGE 06</span>
+            <h4 class="font-extrabold text-slate-900 text-base">취업 역량 강화 및 매칭</h4>
+          </div>
+          <div class="md:w-2/3 text-sm text-slate-600 font-medium">
+            • 코딩 테스트 대비 알고리즘 및 CS 기본기 코칭<br/>
+            • 1:1 맞춤 이력서/포트폴리오 첨삭, 실전 모의면접, 우수 기업 매칭
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. PROCESS (에듀윌 취업 연계 프로세스: 요청하신 5개 부가 설명 텍스트 완벽 삭제) -->
+  <section id="process" class="py-20 max-w-5xl mx-auto px-4 sm:px-6">
+    <div class="reveal-section">
+      <div class="text-center mb-14">
+        <span class="text-xs font-bold uppercase tracking-widest text-amber-600 block mb-2">Employment Process</span>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">에듀윌 취업 연계 PROCESS</h2>
+        <p class="text-slate-600 mt-2 text-sm sm:text-base">수료부터 실전 취업까지 에듀윌 취업지원센터가 동행합니다.</p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3.5">
+        <!-- 01 취업지원 컨설팅 -->
+        <div class="bg-white p-6 rounded-2xl border border-slate-200/80 shadow-xs text-center flex flex-col items-center justify-center hover:border-amber-300 transition-colors">
+          <span class="w-10 h-10 rounded-full bg-slate-100 text-slate-800 font-black text-sm flex items-center justify-center mb-3">01</span>
+          <h5 class="font-extrabold text-slate-900 text-base">취업지원 컨설팅</h5>
+        </div>
+
+        <!-- 02 이력서·자소서 코칭 -->
+        <div class="bg-white p-6 rounded-2xl border border-slate-200/80 shadow-xs text-center flex flex-col items-center justify-center hover:border-amber-300 transition-colors">
+          <span class="w-10 h-10 rounded-full bg-slate-100 text-slate-800 font-black text-sm flex items-center justify-center mb-3">02</span>
+          <h5 class="font-extrabold text-slate-900 text-base">이력서·자소서 코칭</h5>
+        </div>
+
+        <!-- 03 모의면접 훈련 -->
+        <div class="bg-white p-6 rounded-2xl border border-slate-200/80 shadow-xs text-center flex flex-col items-center justify-center hover:border-amber-300 transition-colors">
+          <span class="w-10 h-10 rounded-full bg-slate-100 text-slate-800 font-black text-sm flex items-center justify-center mb-3">03</span>
+          <h5 class="font-extrabold text-slate-900 text-base">모의면접 훈련</h5>
+        </div>
+
+        <!-- 04 연계기업 매칭 -->
+        <div class="bg-white p-6 rounded-2xl border border-slate-200/80 shadow-xs text-center flex flex-col items-center justify-center hover:border-amber-300 transition-colors">
+          <span class="w-10 h-10 rounded-full bg-slate-100 text-slate-800 font-black text-sm flex items-center justify-center mb-3">04</span>
+          <h5 class="font-extrabold text-slate-900 text-base">연계기업 매칭</h5>
+        </div>
+
+        <!-- 05 성공적인 취업! -->
+        <div class="bg-eduwill p-6 rounded-2xl border border-yellow-300 shadow-sm text-center flex flex-col items-center justify-center">
+          <span class="w-10 h-10 rounded-full bg-slate-950 text-amber-300 font-black text-sm flex items-center justify-center mb-3">05</span>
+          <h5 class="font-black text-slate-950 text-base">성공적인 취업!</h5>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9. 하단 최종 CTA 배너 섹션 -->
+  <section class="py-20 bg-gradient-to-b from-slate-900 to-slate-950 text-white">
+    <div class="reveal-section max-w-4xl mx-auto px-4 sm:px-6 text-center">
+      <span class="inline-block text-xs font-bold text-amber-400 tracking-wider uppercase mb-3">
+        Recruitment Open
+      </span>
+      <h2 class="text-2xl sm:text-4xl font-black mb-4 tracking-tight">
+        지금, 생성형 AI 시대의 주인공이 되세요
+      </h2>
+      <p class="text-slate-300 text-sm sm:text-base max-w-xl mx-auto mb-8 font-medium leading-relaxed">
+        국비지원 혜택과 20명 소수정예 집중 케어!<br/>
+        간단한 신청으로 입학 및 자격 확인 상담을 즉시 도와드립니다.
+      </p>
+
+      <a
+        href="https://naver.me/5qLaGB0M"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-3 bg-eduwill hover:bg-amber-400 text-slate-950 font-black text-base sm:text-lg px-8 py-4 rounded-full shadow-lg hover:shadow-amber-400/20 transition-all transform hover:-translate-y-1 active:translate-y-0"
+      >
+        <span>상담 및 과정 지원하기</span>
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+        </svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- 10. FOOTER -->
+  <footer class="bg-slate-900 border-t border-slate-800 text-slate-400 py-10 text-xs leading-relaxed">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6">
+      <div class="font-bold text-slate-200 text-sm mb-2">에듀윌 국비교육원 성남센터</div>
+      <p class="mb-1">주소 : 경기도 성남시 중원구 성남대로 1129, 하나빌딩 6층 & 7층</p>
+      <p class="mb-4">과정 : (K-DT) RDB 활용 GEN-AI 풀스택 개발자 (정원 20명)</p>
+      <p class="mb-4">운영/담당자: 이진영</p>
+      <div class="pt-4 border-t border-slate-800 text-slate-500">
+        Copyright ⓒ (주)에듀윌 Corp. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <!-- 우측 하단 지원하기 플로팅 버튼 -->
+  <aside class="fixed bottom-6 right-6 z-50">
+    <a
+      href="https://naver.me/5qLaGB0M"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="animate-float group flex items-center gap-2.5 bg-eduwill hover:bg-amber-400 text-slate-950 font-black px-5 py-3.5 sm:px-6 sm:py-4 rounded-full shadow-2xl shadow-yellow-500/40 border-2 border-white hover:border-yellow-200 transition-all duration-300 transform hover:scale-105 active:scale-95"
+    >
+      <span class="text-base sm:text-lg">✍️</span>
+      <span class="text-sm sm:text-base font-extrabold tracking-tight">지원하기</span>
+      <svg class="w-4 h-4 text-slate-900 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+      </svg>
+    </a>
+  </aside>
+
+  <!-- 스크롤 감지 및 파트별 애니메이션 트리거 스크립트 -->
+  <script>
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-revealed');
+        } else {
+          entry.target.classList.remove('is-revealed');
+        }
+      });
+    }, {
+      threshold: 0.12,
+      rootMargin: '0px 0px -40px 0px'
+    });
+
+    document.querySelectorAll('.reveal-section').forEach((section) => {
+      revealObserver.observe(section);
+    });
+
+    let lastScrollY = window.pageYOffset;
+    const header = document.getElementById('main-header');
+
+    window.addEventListener('scroll', () => {
+      const currentScrollY = window.pageYOffset;
+
+      if (currentScrollY > 80) {
+        if (currentScrollY > lastScrollY + 6) {
+          header.classList.remove('header-visible');
+          header.classList.add('header-hidden');
+        } else if (currentScrollY < lastScrollY - 6) {
+          header.classList.remove('header-hidden');
+          header.classList.add('header-visible');
+        }
+      } else {
+        header.classList.remove('header-hidden');
+        header.classList.add('header-visible');
+      }
+
+      lastScrollY = currentScrollY <= 0 ? 0 : currentScrollY;
+    }, { passive: true });
+  </script>
+</body>
+</html>
